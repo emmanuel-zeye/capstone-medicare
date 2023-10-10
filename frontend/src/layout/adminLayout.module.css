@@ -1,0 +1,292 @@
+.sidebar_wrapper_container {
+    display: flex;
+    height: 100vh;
+    position: relative;
+}
+.sidebar_container {
+    background-color: #031433;
+    width: 19rem;
+    position: absolute;
+    min-height: 100%;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    overflow-y: hidden;
+    transition: width 0.3s ease-in-out;
+    /* Add transition property */
+}
+.sidebar_container_close {
+    background-color: #031433;
+    width: 5rem;
+    position: absolute;
+    min-height: 100%;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    overflow-y: hidden;
+    transition: width 0.3s ease-out;
+    /* Add transition property */
+}
+.logo {
+    max-width: 8em;
+    position: absolute;
+    left: -1.5em;
+    top: -1.4em;
+    mix-blend-mode: multiply;
+    color: black;
+    cursor: pointer;
+}
+.icon {
+    position: absolute;
+    cursor: pointer;
+    top: 1.75em;
+    right: 1em;
+    background-color: transparent;
+    padding: 0.25em;
+    z-index: 10;
+    font-size: 1.3em;
+    color: white;
+}
+.sidebar_logo_container {
+    display: flex;
+    gap: 2em;
+    align-items: center;
+    position: relative;
+}
+.sidebar_logo_container .sidebar_logo_header {
+    display: flex;
+    gap: 0.5rem;
+    position: absolute;
+    left: 2.5rem;
+    top: 1.5rem;
+}
+.sidebar_logo_container .sidebar_logo_header img {
+    max-height: 2.8rem;
+    max-width: 3rem;
+    transition: ease-in-out 400ms;
+}
+.sidebar_logo_container .sidebar_logo_header p {
+    color: white;
+    text-align: center;
+    transition: ease-in-out 400ms;
+    font-size: 1.1em;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.main_content_container {
+    margin-left: 5em;
+    flex: 1;
+    overflow-y: scroll !important;
+}
+.menu {
+    padding-top: 5em;
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.menu_item {
+    color: #c1b9b9;
+    display: flex;
+    align-items: center;
+    gap: 1.25em;
+    cursor: pointer;
+    justify-self: flex-end;
+    padding: 0.7em 0.7em 0.7em 1.75em;
+    margin-top: 0.5em;
+    text-decoration: none;
+}
+.menu_item:hover {
+    border-top-left-radius: 1.5em;
+    border-bottom-left-radius: 1.5em;
+    color: white;
+    background-color: #38465f;
+}
+.menu_item_active {
+    border-top-left-radius: 1.5em;
+    border-bottom-left-radius: 1.5em;
+    color: white;
+    background-color: #38465f;
+    display: flex;
+    align-items: center;
+    gap: 1.25em;
+    cursor: pointer;
+    justify-self: flex-end;
+    padding: 0.7em 0.7em 0.7em 1.75em;
+    margin-top: 0.5em;
+    text-decoration: none;
+}
+.menu_item_active span {
+    font-size: 0.75em;
+    text-transform: uppercase;
+}
+.menu_item > span {
+    font-size: 0.75em;
+    text-transform: uppercase;
+}
+.menu_icon {
+    font-size: 1.5em;
+}
+.logout_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    max-width: 80%;
+    padding: 0.35em 0.35em 0.35em 1.2em;
+    margin-left: 1em;
+    margin-top: 1.5em;
+    text-decoration: none;
+    position: absolute;
+    bottom: 2rem;
+    gap: 2em;
+}
+.logout_container:hover {
+    border-radius: 0.25em;
+    min-width: 80%;
+    background-color: white;
+    transition: transform ease-in-out 500ms;
+}
+.logout_icon {
+    color: white;
+    font-size: 1.5em;
+}
+.logout_icon:hover {
+    color: #f47458;
+}
+.logout_container > h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+}
+.logout_container > h3:hover {
+    color: #f47458;
+}
+.nav_container {
+    display: grid;
+    flex-direction: row;
+    background-image: linear-gradient(142deg, rgba(0, 44, 196, 1) 5%, rgba(0, 180, 169, 1) 97%);
+    padding: 1em 3em 1em 3em;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.16);
+}
+.header_right_container {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+    position: relative;
+    justify-self: flex-end;
+}
+.header_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    margin: 0 1rem 0 0;
+    cursor: pointer;
+    background-color: #2a2a2a;
+    border-radius: 5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: white;
+    height: 3rem;
+}
+.header_icon_title {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+.notification_icon_container {
+    cursor: pointer;
+    display: flex;
+    position: relative;
+}
+.notification_icon_container span {
+    background: #ec0013;
+    color: white;
+    height: 0.6em;
+    width: 0.6em;
+    position: absolute;
+    right: -0.8em;
+    border-radius: 50%;
+    padding: 0.5em;
+    align-items: center;
+    display: flex;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+.notification_icon {
+    align-self: center;
+}
+.user_icon {
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 0.5em;
+    margin: 0;
+    font-size: 0.9rem;
+}
+.mobile_menu {
+    display: none;
+}
+@media only screen and (max-width: 920px) {
+    .sidebar_wrapper_container {
+        flex-direction: row-reverse;
+    }
+    .sidebar_container {
+        position: absolute;
+    }
+    .sidebar_container_close {
+        position: absolute;
+        z-index: 10;
+        display: none;
+    }
+    .notification_icon_container {
+        z-index: 1;
+    }
+    .nav_container {
+        padding-right: 1.7em;
+    }
+    .mobile_menu {
+        display: block;
+        margin-left: 0.5em;
+        font-size: 1.4em;
+    }
+    .sidebar_container {
+        z-index: 10;
+    }
+    .main_content_container {
+        flex: 1;
+        min-width: 100%;
+    }
+    .notification_icon_container {
+        display: none;
+    }
+    .logo {
+        top: -2em;
+    }
+}
+.dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 4.5rem;
+    width: 10rem;
+    z-index: 100;
+    right: 4.8rem;
+    background-color: white;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+.dropdown p {
+    cursor: pointer;
+}
+@media only screen and (min-width: 1280px) {
+    .sidebar_container {
+        position: relative;
+    }
+    .sidebar_container_close {
+        position: relative;
+    }
+    .main_content_container {
+        margin-left: 0;
+        flex: 10;
+    }
+}

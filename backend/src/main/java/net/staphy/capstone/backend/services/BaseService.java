@@ -1,5 +1,6 @@
 package net.staphy.capstone.backend.services;
 
+import lombok.extern.slf4j.Slf4j;
 import net.staphy.capstone.backend.dtos.Pager;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
@@ -12,6 +13,7 @@ import org.springframework.util.ObjectUtils;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 public class BaseService<Entity> {
 
     private final JpaRepository<Entity, Long> repository;
@@ -43,10 +45,11 @@ public class BaseService<Entity> {
     }
 
     public ResponseEntity<Entity> updateOne(Long id, Entity entity) {
-        Optional<Entity> ent = repository.findById(id);
-        if(ent.isPresent()) {
+        Entity ent = repository.findById(id).orElse(null);
+        if(ent != null) {
             BeanUtils.copyProperties(entity, ent, "id");
-            return ResponseEntity.ok().body(repository.save(ent.get()));
+            log.info("Source {}, updated: {}", entity, ent);
+            return ResponseEntity.ok().body(repository.save(ent));
         }
         return ResponseEntity.notFound().build();
     }

@@ -1,0 +1,5 @@
+.storeProductsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust minmax() values as needed */
+    gap: 20px; /* Adjust gap size as needed */
+}

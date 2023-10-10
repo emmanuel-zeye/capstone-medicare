@@ -25,10 +25,6 @@ public class SecurityConfig  {
         this.userDetailsService = userDetailsService;
     }
 
-    @Bean
-    public PasswordEncoder getPasswordEncoder() {
-        return new BCryptPasswordEncoder(20);
-    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {

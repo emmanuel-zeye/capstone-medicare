@@ -17,6 +17,7 @@ import {authApi} from "../api/authApi.js";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { loadState } from "./localStorage.js";
 import rootReducer from "./rootReducer.js";
+import {defaultApi} from "../api/defaultApi.js";
 
 const persistedState = loadState();
 
@@ -37,7 +38,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(authApi.middleware),
+    }).concat(authApi.middleware, defaultApi.middleware),
 });
 
 export const persistor = persistStore(store);

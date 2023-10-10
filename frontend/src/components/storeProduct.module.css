@@ -1,0 +1,8 @@
+
+.productImage {
+    max-width: 100%; /* Ensures the image doesn't exceed its container's width */
+    max-height: 240px;
+    min-height: 240px;
+    aspect-ratio: auto;
+    height: auto; /* Maintains the image's aspect ratio */
+}

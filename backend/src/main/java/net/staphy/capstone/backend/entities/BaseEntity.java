@@ -1,6 +1,7 @@
 package net.staphy.capstone.backend.entities;
 
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Data;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 @Data
 public class BaseEntity {
     @Id
+    @GeneratedValue
     private long id;
     @CreatedDate
     private LocalDateTime createdAt;

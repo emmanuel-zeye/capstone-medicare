@@ -1,5 +1,6 @@
 package net.staphy.capstone.backend.controllers;
 
+import jakarta.validation.Valid;
 import net.staphy.capstone.backend.dtos.LoginDto;
 import net.staphy.capstone.backend.dtos.LoginResponseDto;
 import net.staphy.capstone.backend.entities.User;
@@ -14,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController extends BaseController<User> {
 
-    private UserService service;
+    private final UserService service;
     public UserController(UserService service) {
         super(service);
         this.service = service;
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponseDto> login(@RequestBody LoginDto loginDto) {
-return ResponseEntity.ok().body(service.login(loginDto));
+    public ResponseEntity<LoginResponseDto> login(@RequestBody @Valid LoginDto loginDto) {
+        return ResponseEntity.ok().body(service.login(loginDto));
     }
 }

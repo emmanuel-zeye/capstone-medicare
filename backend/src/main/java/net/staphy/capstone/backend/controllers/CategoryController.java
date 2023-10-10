@@ -5,7 +5,7 @@ import net.staphy.capstone.backend.services.CategoryService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("categories")
+@RequestMapping("product-categories")
 @RestController
 public class CategoryController extends BaseController<Category> {
     public CategoryController(CategoryService service) {

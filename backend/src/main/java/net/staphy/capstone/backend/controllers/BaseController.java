@@ -1,10 +1,12 @@
 package net.staphy.capstone.backend.controllers;
 
+import jakarta.validation.Valid;
 import net.staphy.capstone.backend.dtos.Pager;
 import net.staphy.capstone.backend.services.BaseService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -27,17 +29,22 @@ public class BaseController<Entity> {
     }
 
     @GetMapping("")
-    public ResponseEntity<Page<Entity>> findAllPaged(@RequestParam Pager pager) {
+    public ResponseEntity<Page<Entity>> findAllPaged(Pager pager) {
         return service.findAll(pager);
     }
 
     @PostMapping("")
-    public ResponseEntity<Entity> createOne(@RequestBody Entity entity) {
+    public ResponseEntity<Entity> createOne(@RequestBody @Valid Entity entity) {
+        return service.create(entity);
+    }
+
+    @PostMapping("with-attachments")
+    public ResponseEntity<Entity> createOneWithFiles(@RequestParam("attachments") MultipartFile[] file, @RequestPart Entity entity) {
         return service.create(entity);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Entity> updateOne(@PathVariable Long id,  @RequestBody Entity entity) {
+    public ResponseEntity<Entity> updateOne(@PathVariable Long id,  @RequestBody @Valid Entity entity) {
         return service.updateOne(id , entity);
     }
 

@@ -1,3 +1,5 @@
+import sweetAlert from "sweetalert2";
+
 export const parseJwt = (token) =>{
     const base64Url = token.split(".")[1];
     const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -21,4 +23,10 @@ export const prepareHeaders = (headers, { getState }) => {
         headers.set('Authorization', `Bearer ${token}`)
     }
     return headers
+}
+
+const toastData = {toast: true, position: 'top-right', timer: 5000, showConfirmButton: false}
+export const toast = {
+    error: (text) => sweetAlert.fire({...toastData, icon: "error", text}),
+    success: (text) => sweetAlert.fire({...toastData, icon: "success", text}),
 }
