@@ -2,9 +2,9 @@ import DashboardLayout from "../../layout/AdminLayout.jsx";
 import Crud from "../../components/Crud.jsx";
 import {userSchema} from "../../utils/schemas.jsx";
 
-const AdminHome = ()=> {
+const AdminHome = () => {
     return <DashboardLayout>
-        <Crud schema={userSchema} />
+        <Crud schema={userSchema}/>
     </DashboardLayout>
 }
 

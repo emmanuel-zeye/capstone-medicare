@@ -1,6 +1,6 @@
 import sweetAlert from "sweetalert2";
 
-export const parseJwt = (token) =>{
+export const parseJwt = (token) => {
     const base64Url = token.split(".")[1];
     const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
     const jsonPayload = decodeURIComponent(
@@ -17,7 +17,7 @@ export const parseJwt = (token) =>{
 }
 
 
-export const prepareHeaders = (headers, { getState }) => {
+export const prepareHeaders = (headers, {getState}) => {
     const token = (getState()).auth.token
     if (token) {
         headers.set('Authorization', `Bearer ${token}`)

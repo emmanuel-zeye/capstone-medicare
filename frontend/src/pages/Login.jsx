@@ -19,7 +19,7 @@ function Login() {
         login({email, password}).unwrap().then(data => {
             console.log({data})
             toast.success("Login successful");
-            const { token, refreshToken } = data;
+            const {token, refreshToken} = data;
             if (data) {
                 const user = parseJwt(token);
                 dispatch(
@@ -29,10 +29,10 @@ function Login() {
                         refreshToken
                     })
                 );
-                navigate(user.userType === 'admin' ? "/dashboard/home" : '/store/products', { replace: true });
+                navigate(user.userType === 'admin' ? "/dashboard/home" : '/store/products', {replace: true});
             }
         })
-            .catch(()=> toast.error("Invalid username or password. Please check and try again"))
+            .catch(() => toast.error("Invalid username or password. Please check and try again"))
     }
 
     return (

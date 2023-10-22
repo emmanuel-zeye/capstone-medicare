@@ -1,9 +1,7 @@
-import {useLoginMutation, useSignupMutation} from "../api/authApi.js";
+import {useSignupMutation} from "../api/authApi.js";
 import {useState} from "react";
 import {Button, Card, CardBody, Col, Container, Form, Row} from 'react-bootstrap';
-import {parseJwt, toast} from "../utils/index.js";
-import {setCredentials} from "../store/slices/authSlice.js";
-import {useAppDispatch} from "../store/store.js";
+import {toast} from "../utils/index.js";
 import {useNavigate} from "react-router-dom";
 
 
@@ -17,17 +15,17 @@ function Signup() {
     const navigate = useNavigate();
 
     const handleCreateAccount = () => {
-        if(password !== confirmPassword) {
+        if (password !== confirmPassword) {
             toast.error("Passwords do not match")
             return;
         }
         console.log('handling account creation')
-        signup({email, password,firstName, lastName}).unwrap().then(data => {
+        signup({email, password, firstName, lastName}).unwrap().then(data => {
             console.log({data})
             toast.success("Account created successfully");
-            navigate("/login", { replace: true });
+            navigate("/login", {replace: true});
         })
-            .catch((e)=> {
+            .catch((e) => {
                 console.log(e.message, e, e.value, e.error);
                 toast.error("Could not create an account: " + e.data?.message)
             })
@@ -48,7 +46,7 @@ function Signup() {
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
                             </Form.Group>
-                            <Form.Group >
+                            <Form.Group>
                                 <Form.Label>Firstname</Form.Label>
                                 <Form.Control
                                     type="text"

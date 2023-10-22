@@ -29,7 +29,7 @@ export const defaultApi = createApi({
         }),
         create: builder.mutation({
             query: ({url, data}) => {
-              console.log("Data is ", data)
+                console.log("Data is ", data)
                 return {
                     url,
                     method: 'POST',
@@ -40,7 +40,7 @@ export const defaultApi = createApi({
         }),
         update: builder.mutation({
             query: ({url, id, data}) => {
-                console.log({url,id,data})
+                console.log({url, id, data})
                 return {
                     url: `/${url}/${id}`,
                     method: 'PUT',

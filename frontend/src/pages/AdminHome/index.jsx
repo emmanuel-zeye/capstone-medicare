@@ -1,6 +1,6 @@
 import DashboardLayout from "../../layout/AdminLayout.jsx";
 
-const AdminHome = ()=> {
+const AdminHome = () => {
     return <DashboardLayout>
         <h2>Admin HOme</h2>
     </DashboardLayout>

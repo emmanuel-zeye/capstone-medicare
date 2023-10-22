@@ -11,7 +11,7 @@ const Crud = ({schema, enableCreate = true, enableDelete = true, enableEdit = tr
     const [page, setPage] = useState(0);
     const [pageSize, setPageSize] = useState(20);
     const [formData, setFormData] = useState({});
-    const{data, isLoading, refetch} = useReadQuery([url,{page,pageSize}], {refetchOnMountOrArgChange: true} );
+    const {data, isLoading, refetch} = useReadQuery([url, {page, pageSize}], {refetchOnMountOrArgChange: true});
     const [createAsync, {isLoading: isCreating}] = useCreateMutation();
     const [deleteAsync, {isLoading: isDeleting}] = useDeleteMutation();
     const [updateAsync, {isLoading: isUpdating}] = useUpdateMutation();
@@ -34,12 +34,12 @@ const Crud = ({schema, enableCreate = true, enableDelete = true, enableEdit = tr
             cancelButtonText: "No, cancel please!",
             closeOnConfirm: false,
             closeOnCancel: false
-        }).then(resp=> {
+        }).then(resp => {
             if (resp.isConfirmed) return deleteAsync({url, id: data.id})
                 .unwrap().then(data => {
-                console.log("Delete data: ", data)
+                    console.log("Delete data: ", data)
                     toast.success("Deleted successfully");
-            })
+                })
                 .catch(e => {
                     console.error("Deletion failed:", e)
                     toast.error(`Could not delete ${name}. \n${e.data.message}`)
@@ -52,21 +52,23 @@ const Crud = ({schema, enableCreate = true, enableDelete = true, enableEdit = tr
 
     const columns = useMemo(() => {
         return [
-            ...actualSchema.filter(d=>d.display).map(s => ({
+            ...actualSchema.filter(d => d.display).map(s => ({
                 name: s.name,
                 sortable: true,
                 selector: (d) => d[s.code] || '',
                 cell: s.onDisplay
             })),
-                {
-                    name: 'Actions',
-                    cell: (data) => {
-                        return <Row>
-                            {enableEdit && <Col><Button className='btn btn-link' onClick={() => onEdit(data)}><Edit/> Edit</Button></Col>}
-                            {enableDelete && <Col><Button className='btn btn-link' onClick={() => onDelete(data)}><Delete/> Delete</Button></Col>}
-                        </Row>
-                    }
+            {
+                name: 'Actions',
+                cell: (data) => {
+                    return <Row>
+                        {enableEdit && <Col><Button className='btn btn-link'
+                                                    onClick={() => onEdit(data)}><Edit/> Edit</Button></Col>}
+                        {enableDelete && <Col><Button className='btn btn-link'
+                                                      onClick={() => onDelete(data)}><Delete/> Delete</Button></Col>}
+                    </Row>
                 }
+            }
         ]
     }, [actualSchema]);
 
@@ -80,9 +82,9 @@ const Crud = ({schema, enableCreate = true, enableDelete = true, enableEdit = tr
         console.log({formData})
         e.preventDefault();
         const data = new FormData();
-        Object.entries(formData).forEach(([k,v]) => {
-            console.log("Adding",k,v)
-            data.append(k,v);
+        Object.entries(formData).forEach(([k, v]) => {
+            console.log("Adding", k, v)
+            data.append(k, v);
         });
         const finalUrl = hasMultipartData ? `${url}/with-attachments` : url;
 
@@ -105,15 +107,15 @@ const Crud = ({schema, enableCreate = true, enableDelete = true, enableEdit = tr
             'select-multiple': Array.from(selectedOptions || []).map(option => option.value)
         }
         const v = mapping[type] || value;
-        console.log("Handling change", {name,v, type, selectedOptions})
+        console.log("Handling change", {name, v, type, selectedOptions})
         setFormData(formData => ({...formData, [name]: v}))
     }
 
-    return  <Container fluid>
+    return <Container fluid>
         <Row className='align-items-center justify-content-between'>
             <Col className='text-start'><h2>{schemaName}</h2></Col>
             {enableCreate && <Col className='text-end text-success'><span className='btn-link'
-                                                          onClick={onAdd}><PlusCircle/>Create New</span></Col>}
+                                                                          onClick={onAdd}><PlusCircle/>Create New</span></Col>}
         </Row>
         <Row className='rounded'>
             <Col>
@@ -131,15 +133,15 @@ const Crud = ({schema, enableCreate = true, enableDelete = true, enableEdit = tr
                 />}
             </Col>
         </Row>
-        <Modal show={showModal} onHide={()=>setShowModal(false)} size='xl'>
+        <Modal show={showModal} onHide={() => setShowModal(false)} size='xl'>
             <Form onSubmit={onSubmit}>
-            <ModalHeader closeButton><h2>{itemToEdit ? "Update" : "Create"} {schemaName}</h2></ModalHeader>
-            <ModalBody>
+                <ModalHeader closeButton><h2>{itemToEdit ? "Update" : "Create"} {schemaName}</h2></ModalHeader>
+                <ModalBody>
 
                     <Row>
                         {
-                            actualSchema.filter(s=>{
-                                if(itemToEdit) return true;
+                            actualSchema.filter(s => {
+                                if (itemToEdit) return true;
                                 return s.insertable;
                             }).map(s => <Col key={s.name} md={6} xl={6} sm={12}>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -156,10 +158,10 @@ const Crud = ({schema, enableCreate = true, enableDelete = true, enableEdit = tr
                         }
                     </Row>
 
-            </ModalBody>
-            <ModalFooter>
-                <Button type='submit'>{itemToEdit ? "Update" : "Create"}</Button>
-            </ModalFooter>
+                </ModalBody>
+                <ModalFooter>
+                    <Button type='submit'>{itemToEdit ? "Update" : "Create"}</Button>
+                </ModalFooter>
             </Form>
         </Modal>
     </Container>

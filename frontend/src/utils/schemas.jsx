@@ -78,7 +78,7 @@ export const productSchema = {
             display: true,
             insertable: true,
             Component: CategoryPicker,
-            onDisplay: (row) => <div>{row.categories.map(({id,name}) => <div key={id}>{name}</div>)}</div>,
+            onDisplay: (row) => <div>{row.categories.map(({id, name}) => <div key={id}>{name}</div>)}</div>,
             props: {multiple: true},
         },
         {
@@ -88,7 +88,7 @@ export const productSchema = {
             display: true,
             insertable: true,
             Component: FormControl,
-            onDisplay: (row) => <><Image src={row.imageUrl} width={100} height={100} /></>,
+            onDisplay: (row) => <><Image src={row.imageUrl} width={100} height={100}/></>,
             props: {type: 'text'},
         },
         ...defaultSchema
@@ -196,7 +196,11 @@ export const userSchema = {
             insertable: true,
             display: true,
             Component: FormSelect,
-            props: {as: 'select', children: [<><option hidden>Select...</option>{['admin', 'customer'].map(d=> <option key={d} value={d}>{d}</option>)}</>]},
+            props: {as: 'select',
+                children: [<>
+                    <option hidden>Select...</option>
+                    {['admin', 'customer'].map(d => <option key={d} value={d}>{d}</option>)}</>]
+            },
         },
         ...defaultSchema
     ]

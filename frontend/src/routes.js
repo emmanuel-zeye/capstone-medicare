@@ -1,11 +1,11 @@
-import {Activity, Box, Layers, ShoppingBag, ShoppingCart, Users} from 'react-feather'
-import Login from "./pages/Login.jsx";
+import {Box, Layers, ShoppingBag, ShoppingCart, Users} from 'react-feather'
 import AdminHome from "./pages/AdminHome/index.jsx";
 import AdminProducts from "./pages/AdminProducts/index.jsx";
 import AdminOrders from "./pages/AdminOrders/index.jsx";
 import AdminUsers from "./pages/AdminUsers/index.jsx";
 import AdminProductCategories from "./pages/AdminProductCategories/index.jsx";
 import StoreProducts from "./pages/StoreProducts/index.jsx";
+
 export const dashboardRoutes = [
     {
         title: "Dashboard",

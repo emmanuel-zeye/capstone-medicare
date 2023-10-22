@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 import styles from "./storeLayout.module.css";
 
 import {ChevronDown, ShoppingCart, User} from "react-feather";
@@ -8,7 +8,7 @@ import {useAuth} from "../hooks/useAuth.js";
 import {logout} from "../store/slices/authSlice.js";
 import {useAppDispatch} from "../store/store.js";
 
-const StoreLayout = ({ children }) => {
+const StoreLayout = ({children, cartCount}) => {
     const [openDropDown, setOpenDropDown] = useState(false);
     const dispatch = useAppDispatch();
     const auth = useAuth();
@@ -23,28 +23,28 @@ const StoreLayout = ({ children }) => {
                     <div className={styles.nav_container}>
                         <nav className={styles.sidebar_logo_container}>
                             <div className={styles.sidebar_logo_header}>
-                                <img src={logo} alt="" />
+                                <img src={logo} alt=""/>
                                 <p>Capstone Medical Supplies</p>
                             </div>
                         </nav>
                         <nav className={styles.header_right_container}>
                             <div className={styles.header_icon}>
-                                {0}
-                                <ShoppingCart color='white' />
+                                {cartCount}
+                                <ShoppingCart color='white'/>
                                 <h4>Cart</h4>
                             </div>
                             <div
                                 className={styles.header_icon}
                                 onClick={() => setOpenDropDown((prev) => !prev)}
                             >
-                                <User color="white" className={styles.user_icon} />
+                                <User color="white" className={styles.user_icon}/>
                                 <h4 className={styles.header_icon_title}>
                                     {user?.firstName} {user?.lastName}
                                 </h4>
                                 <ChevronDown
                                     color="white"
                                     className={styles.chevron_down}
-                                    style={{ justifySelf: "center" }}
+                                    style={{justifySelf: "center"}}
                                 />
                             </div>
                         </nav>

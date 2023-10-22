@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {Container, Row, Col, Button, CloseButton, Image} from 'react-bootstrap';
+import React, {useState} from 'react';
+import {Col, Container, Image, Row} from 'react-bootstrap';
 import {XCircle} from "react-feather";
 
 const ImageUpload = () => {
@@ -57,7 +57,7 @@ const ImageUpload = () => {
                                 className="image-preview p-3"
                             >
                                 <div>
-                                    <XCircle color='red' onClick={() => handleRemoveImage(index)} />
+                                    <XCircle color='red' onClick={() => handleRemoveImage(index)}/>
                                     <Image
                                         src={preview}
                                         alt={`Preview ${index}`}

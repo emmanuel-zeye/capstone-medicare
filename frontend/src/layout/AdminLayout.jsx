@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useState} from "react";
 import styles from "./adminLayout.module.css";
 
 import {ChevronDown, ChevronLeft, Menu, User} from "react-feather";
@@ -9,12 +9,12 @@ import {useAuth} from "../hooks/useAuth.js";
 import {logout} from "../store/slices/authSlice.js";
 import {useAppDispatch} from "../store/store.js";
 
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = ({children}) => {
     const [open, setOpen] = useState(true);
     const [openDropDown, setOpenDropDown] = useState(false);
     const dispatch = useAppDispatch();
     const auth = useAuth();
-    const {can,user} = auth;
+    const {can, user} = auth;
     const navigate = useNavigate();
 
     console.log("Rendering dashboard", {user})
@@ -37,26 +37,26 @@ const DashboardLayout = ({ children }) => {
                         <>
                             <ChevronLeft
                                 className={styles.icon}
-                                style={{ right: ".6em" }}
+                                style={{right: ".6em"}}
                                 onClick={() => setOpen(false)}
                             />
                         </>
                     )}
                     <div
                         className={styles.sidebar_logo_container}
-                        style={open ? { transform: "scale(1)" } : { transform: "scale(0)" }}
+                        style={open ? {transform: "scale(1)"} : {transform: "scale(0)"}}
                     >
                         <div className={styles.sidebar_logo_header}>
-                            <img src={logo} alt="" />
+                            <img src={logo} alt=""/>
                             <p>Capstone Store Manager</p>
                         </div>
                     </div>
                     <ul className={styles.menu}>
-                        {sidebarMenuItems.filter(({role})=>role.includes('admin')).map((menu) => (
+                        {sidebarMenuItems.filter(({role}) => role.includes('admin')).map((menu) => (
                             can(menu.permissions) && <NavLink
                                 to={menu.path}
                                 key={menu.path}
-                                className={({ isActive }) =>
+                                className={({isActive}) =>
                                     isActive ? styles.menu_item_active : styles.menu_item
                                 }
                             >
@@ -74,14 +74,14 @@ const DashboardLayout = ({ children }) => {
                                 className={styles.header_icon}
                                 onClick={() => setOpenDropDown((prev) => !prev)}
                             >
-                                <User color="white" className={styles.user_icon} />
+                                <User color="white" className={styles.user_icon}/>
                                 <h4 className={styles.header_icon_title}>
                                     {user?.firstName} {user?.lastName}
                                 </h4>
                                 <ChevronDown
                                     color="white"
                                     className={styles.chevron_down}
-                                    style={{ justifySelf: "center" }}
+                                    style={{justifySelf: "center"}}
                                 />
                             </div>
                             <Menu
