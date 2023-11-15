@@ -17,4 +17,5 @@ public class Payment extends BaseEntity {
     private Order order;
     private BigDecimal amount;
     private String paymentChannel;
+    private String paymentAccount;
 }

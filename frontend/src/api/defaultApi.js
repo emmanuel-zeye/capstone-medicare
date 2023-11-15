@@ -56,10 +56,22 @@ export const defaultApi = createApi({
             }),
             invalidatesTags: ['data']
         }),
+        checkout: builder.mutation({
+            query: (data) => {
+                console.log("Hnadling data", data)
+                return {
+                    url: `/orders/checkout`,
+                    body: data,
+                    method: 'post'
+                }
+
+            },
+        }),
+
     }),
 })
 
 
 export const {
-    useReadQuery, useCreateMutation, useReadOneQuery, useDeleteMutation, useUpdateMutation
+    useReadQuery, useCreateMutation, useReadOneQuery, useDeleteMutation, useUpdateMutation, useCheckoutMutation
 } = defaultApi

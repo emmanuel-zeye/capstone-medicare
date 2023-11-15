@@ -32,12 +32,16 @@ public class BaseService<Entity> {
     }
 
     public ResponseEntity<Page<Entity>> findAll(Pager pager) {
+        PageRequest pageRequest = getPageRequest(pager);
+        return ResponseEntity.ok().body(repository.findAll(pageRequest));
+    }
+
+    public PageRequest getPageRequest(Pager pager) {
         Sort sort = Sort.unsorted();
         if(!ObjectUtils.isEmpty(pager.getSortColumn()) && !ObjectUtils.isEmpty(pager.getOrder())) {
             sort = Sort.by(pager.getOrder(), pager.getSortColumn());
         }
-        PageRequest pageRequest = PageRequest.of(pager.getPage(), pager.getPageSize(), sort);
-        return ResponseEntity.ok().body(repository.findAll(pageRequest));
+        return PageRequest.of(pager.getPage(), pager.getPageSize(), sort);
     }
 
     public ResponseEntity<Entity> create(Entity entity) {

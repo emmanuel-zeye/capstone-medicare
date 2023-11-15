@@ -118,15 +118,15 @@ export const orderSchema = {
     url: 'orders',
     hasMultipartData: false,
     schema: [
-        {
-            code: 'name',
-            name: 'Name',
-            updatable: true,
-            insertable: true,
-            display: true,
-            Component: FormControl,
-            props: {type: 'text'},
-        },
+        // {
+        //     code: 'name',
+        //     name: 'Name',
+        //     updatable: true,
+        //     insertable: true,
+        //     display: true,
+        //     Component: FormControl,
+        //     props: {type: 'text'},
+        // },
         ...defaultSchema
     ]
 }

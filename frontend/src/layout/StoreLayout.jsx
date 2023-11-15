@@ -2,11 +2,12 @@ import {useState} from "react";
 import styles from "./storeLayout.module.css";
 
 import {ChevronDown, ShoppingCart, User} from "react-feather";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import logo from "../assets/react.svg";
 import {useAuth} from "../hooks/useAuth.js";
 import {logout} from "../store/slices/authSlice.js";
 import {useAppDispatch} from "../store/store.js";
+import {Col, Row} from "react-bootstrap";
 
 const StoreLayout = ({children, cartCount}) => {
     const [openDropDown, setOpenDropDown] = useState(false);
@@ -18,21 +19,20 @@ const StoreLayout = ({children, cartCount}) => {
     return (
         <>
             <main className={styles.sidebar_wrapper_container}>
-
                 <section className={styles.main_content_container}>
                     <div className={styles.nav_container}>
                         <nav className={styles.sidebar_logo_container}>
                             <div className={styles.sidebar_logo_header}>
                                 <img src={logo} alt=""/>
-                                <p>Capstone Medical Supplies</p>
+                                <Link to='/store/products'>Capstone Medical Supplies</Link>
                             </div>
                         </nav>
                         <nav className={styles.header_right_container}>
-                            <div className={styles.header_icon}>
+                            <Link to='/store/cart' className={styles.header_icon}>
                                 {cartCount}
                                 <ShoppingCart color='white'/>
                                 <h4>Cart</h4>
-                            </div>
+                            </Link>
                             <div
                                 className={styles.header_icon}
                                 onClick={() => setOpenDropDown((prev) => !prev)}
@@ -50,13 +50,17 @@ const StoreLayout = ({children, cartCount}) => {
                         </nav>
                     </div>
                     {openDropDown && (
-                        <div className={styles.dropdown}>
-                            <p onClick={() => {
-                                console.log("Logging out");
-                                dispatch(logout())
-                                navigate('/login')
-                            }}>Logout</p>
-                        </div>
+                        <>
+                            <Row className={styles.dropdown}>
+                                <Col><div onClick={() => {
+                                    dispatch(logout())
+                                    navigate('/login')
+                                }}>Logout</div></Col>
+                                <Col><Link to='/store/orders'>Orders</Link></Col>
+
+                            </Row>
+                        </>
+
                     )}
                     <div>
                         {children}

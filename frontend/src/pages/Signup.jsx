@@ -35,7 +35,7 @@ function Signup() {
         <Container fluid>
             <Row className="justify-content-center align-items-center min-vh-100">
                 <Col md={4} sm={6}>
-                    <Card><h2 className="text-center">Login</h2>
+                    <Card><h2 className="text-center">Create Account</h2>
                         <CardBody><Form>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>

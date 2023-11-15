@@ -1,6 +1,10 @@
 package net.staphy.capstone.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -13,10 +17,14 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "order_items")
 public class OrderItem extends BaseEntity {
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    @JsonBackReference
     private Order order;
-    @OneToOne
+    @ManyToOne
     private Product product;
     private int quantity;
     private BigDecimal price;
+    @ManyToOne
+    private User user;
 }

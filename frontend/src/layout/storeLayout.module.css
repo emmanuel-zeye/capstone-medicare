@@ -285,12 +285,10 @@
     top: 4.5rem;
     width: 10rem;
     z-index: 100;
+    padding: 10px;
     right: 4.8rem;
     background-color: white;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-}
-
-.dropdown p {
     cursor: pointer;
 }
 

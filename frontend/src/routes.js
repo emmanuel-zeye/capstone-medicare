@@ -5,6 +5,9 @@ import AdminOrders from "./pages/AdminOrders/index.jsx";
 import AdminUsers from "./pages/AdminUsers/index.jsx";
 import AdminProductCategories from "./pages/AdminProductCategories/index.jsx";
 import StoreProducts from "./pages/StoreProducts/index.jsx";
+import StoreCart from "./pages/StoreCart/index.jsx";
+import StoreCheckout from "./pages/StoreCheckout/index.jsx";
+import StoreOrders from "./pages/StoreOrders/index.jsx";
 
 export const dashboardRoutes = [
     {
@@ -55,6 +58,30 @@ export const dashboardRoutes = [
         role: ['customer'],
         showInSidebar: true,
         Element: StoreProducts,
+    },
+    {
+        title: "Cart",
+        icon: ShoppingCart,
+        path: "/store/cart",
+        role: ['customer'],
+        showInSidebar: true,
+        Element: StoreCart,
+    },
+    {
+        title: "Checkout",
+        icon: ShoppingCart,
+        path: "/store/checkout",
+        role: ['customer'],
+        showInSidebar: false,
+        Element: StoreCheckout,
+    },
+    {
+        title: "Orders",
+        icon: ShoppingCart,
+        path: "/store/orders",
+        role: ['customer'],
+        showInSidebar: false,
+        Element: StoreOrders,
     },
 ]
 
